@@ -3,10 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-core-exporter", "dotnet-core-exporter\dotnet-core-exporter.csproj", "{8D945FB4-E5AE-4D05-A89A-ACD5AC4882BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet-core-exporter", "dotnet-core-exporter\dotnet-core-exporter.csproj", "{8D945FB4-E5AE-4D05-A89A-ACD5AC4882BE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "方案項目", "方案項目", "{84FB8F6E-5DD7-4927-91D7-266B563EC24B}"
 	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
 		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
