@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: "telegraf"
+    static_configs:
+      - targets: ["telegraf:9273"]
+
+  - job_name: "dotnet-core-exporter"
+    static_configs:
+      - targets: ["dotnet-core-exporter:80"]
