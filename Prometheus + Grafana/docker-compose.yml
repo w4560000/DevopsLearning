@@ -34,3 +34,11 @@ services:
     hostname: dotnet-core-exporter
     ports:
       - 8787:80
+
+  pushgateway:
+    image: prom/pushgateway:latest
+    restart: always
+    container_name: pushgateway
+    hostname: pushgateway
+    ports:
+      - 9091:9091
