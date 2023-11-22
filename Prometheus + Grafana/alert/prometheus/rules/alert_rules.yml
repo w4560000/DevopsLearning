@@ -1,0 +1,8 @@
+groups:
+  - name: example
+    rules:
+      - alert: net_input_rate_bps > 2000
+        expr: demo_recording_net_rate_bps > 2000
+        for: 2m
+        labels:
+          severity: warn
