@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Telegram.Bot;
 
 namespace dotnet_core_exporter.Controllers
 {
@@ -27,6 +28,15 @@ namespace dotnet_core_exporter.Controllers
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
+        }
+
+        [HttpGet("SendTelegramBotMsg")]
+        public async Task<string> SendTelegramBotMsg()
+        {
+            var botClient = new TelegramBotClient("6765457318:AAG47n_tNSvTijh8MN24__9hAwDs2zsL94U");
+            await botClient.SendTextMessageAsync("-1002030473502", "bot Test to channel");
+
+            return "OK";
         }
 
         [HttpGet]

@@ -3,6 +3,8 @@ groups:
     rules:
       - alert: net_input_rate_bps > 2000
         expr: demo_recording_net_rate_bps > 2000
-        for: 2m
+        for: 10s
         labels:
           severity: warn
+        annotations:
+          description: 接收封包達到上限, net_input_rate_bps = {{ $value }}
