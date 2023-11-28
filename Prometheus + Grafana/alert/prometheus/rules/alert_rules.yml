@@ -8,3 +8,12 @@ groups:
           severity: warn
         annotations:
           description: 接收封包達到上限, net_input_rate_bps = {{ $value }}
+  - name: example2
+    rules:
+      - alert: net_input_rate_bps > 4000
+        expr: demo_recording_net_rate_bps > 4000
+        for: 10s
+        labels:
+          severity: urgent
+        annotations:
+          description: 接收封包達到上限, net_input_rate_bps = {{ $value }}

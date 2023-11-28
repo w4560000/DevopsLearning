@@ -1,12 +1,37 @@
 route:
-  receiver: demo
+  receiver: "email-default"
+  group_wait: 5s           #收發訊息等待時間
+  group_interval: 10s      #相同 Group 發送告警時間間隔
+  repeat_interval: 30m     #告警時間間隔
+  routes:
+    - receiver: "email-default"
+      continue: true # EMail 發送完後，後續 receiver 接續發送告警
+    - receiver: "telegram-warn"
+      match_re: # regex
+        severity: warn
+    - receiver: "telegram-urgent"
+      match:
+        severity: urgent
 
 receivers:
-  - name: demo
+  - name: email-default
     email_configs:
       - to: leozheng0411@gmail.com
         from: leozheng0411@gmail.com
         smarthost: smtp.gmail.com:587
         auth_username: leozheng0411@gmail.com
         auth_identity: leozheng0411@gmail.com
-        auth_password: xxx
+        auth_password: qkusqlmdneapgzsu
+        send_resolved: true
+  - name: telegram-warn
+    telegram_configs:
+      - chat_id: -1002030473502
+        bot_token: "6765457318:AAG47n_tNSvTijh8MN24__9hAwDs2zsL94U"
+        message: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
+        send_resolved: true
+  - name: telegram-urgent
+    telegram_configs:
+      - chat_id: -1002016569477
+        bot_token: "6765457318:AAG47n_tNSvTijh8MN24__9hAwDs2zsL94U"
+        message: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
+        send_resolved: true
